@@ -19,4 +19,14 @@ class AnimalController extends AbstractController
             "animaux" => $animaux
         ]);
     }
+
+    /**
+     * @Route("/animal/{id}", name="afficher_animal")
+     */
+    public function afficher_animal(Animal $animal)
+    {
+        return $this->render('animal/afficherAnimal.html.twig',[
+            "animal" => $animal
+        ]);
+    }
 }
