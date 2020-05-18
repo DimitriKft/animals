@@ -2,9 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Famille;
 use App\Repository\FamilleRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class FamilleController extends AbstractController
 {
@@ -16,6 +17,16 @@ class FamilleController extends AbstractController
         $familles = $repository->findAll();
         return $this->render('famille/familles.html.twig', [
             "familles" => $familles
+        ]);
+    }
+    
+      /**
+     * @Route("/famille/{id}", name="afficher_famille")
+     */
+    public function afficherFamille(Famille $famille)
+    {
+        return $this->render('famille/afficherFamille.html.twig', [
+            "famille" => $famille
         ]);
     }
 }
