@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Animal;
+use App\Entity\Continent;
 use App\Entity\Famille;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -11,6 +12,26 @@ class AnimalFixtures extends Fixture
 {
    public function load(ObjectManager $manager)
    {
+      $continent1 = new Continent();
+      $continent1->setLibelle("Europe");
+      $manager->persist($continent1);
+
+      $continent2 = new Continent();
+      $continent2->setLibelle("Asie");
+      $manager->persist($continent2);
+
+      $continent3 = new Continent();
+      $continent3->setLibelle("Afrique");
+      $manager->persist($continent3);
+
+      $continent4 = new Continent();
+      $continent4->setLibelle("Océanie");
+      $manager->persist($continent4);
+
+      $continent5 = new Continent();
+      $continent5->setLibelle("Amérique");
+      $manager->persist($continent5);
+
       $c1 = new Famille();
       $c1->setLibelle("Mammifères")
          ->setDescription("Animaux vertébrés nourissant leurs petits avec du lait");
@@ -33,6 +54,11 @@ class AnimalFixtures extends Fixture
         ->setPoids(10)
         ->setDangereux(false)
         ->setFamille($c1)
+        ->addContinent($continent1)
+        ->addContinent($continent2)
+        ->addContinent($continent3)
+        ->addContinent($continent4)
+        ->addContinent($continent5)
       ;
       $manager->persist($a1);
 
@@ -43,6 +69,8 @@ class AnimalFixtures extends Fixture
          ->setPoids(300)
          ->setDangereux(false)
          ->setFamille($c1)
+         ->addContinent($continent1)
+         ->addContinent($continent5)
       ;
       $manager->persist($a2);
 
@@ -53,6 +81,9 @@ class AnimalFixtures extends Fixture
          ->setPoids(5)
          ->setDangereux(true)
          ->setFamille($c2)
+         ->addContinent($continent2)
+         ->addContinent($continent3)
+         ->addContinent($continent4)
       ;
       $manager->persist($a3);
 
@@ -63,6 +94,8 @@ class AnimalFixtures extends Fixture
          ->setPoids(500)
          ->setDangereux(true)
          ->setFamille($c2)
+         ->addContinent($continent3)
+         ->addContinent($continent4)
       ;
       $manager->persist($a4);
 
@@ -73,6 +106,8 @@ class AnimalFixtures extends Fixture
          ->setPoids(800)
          ->setDangereux(true)
          ->setFamille($c3)
+         ->addContinent($continent4)
+         ->addContinent($continent5)
       ;
       $manager->persist($a5);
     
