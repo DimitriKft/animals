@@ -12,4 +12,14 @@ Using the project :
 Clone the repo on your environment,
 Then install composer "composer install"
 
+To install the database:
+php bin/console doctrine:database:create
+
+To start a migration : 
+php bin/console doctrine:migrations:migrate
+
+To start a fixture :
+php bin/console doctrine:fixtures:load
+
+
 -To start the server: symfony server:start
